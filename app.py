@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 import manager
 from models import City
 
-app = Flask(__name__, )
+app = Flask(__name__)
 
 
 @app.route('/')
@@ -30,4 +30,4 @@ def get_result():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
