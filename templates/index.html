@@ -3,14 +3,16 @@
 {% block content %}
 {{ super() }}
     <h1>Welcome to main page!</h1>
-    <form action="/weather" method="get">
-        <select name="city" id="">
-            {% for c in cities -%}
-                <option value="{{ c[1] }}">{{ c[0] }}</option>
-            {% endfor -%}
-        </select>
-        <input type="text" name="days" placeholder="N days before now">
-    <button type="submit">Go!</button>
-    </form>
+    <div class="data">
+        <form action="/weather" method="get">
+            <select name="city" id="">
+                {% for c in cities -%}
+                    <option value="{{ c[1] }}">{{ c[0] }}</option>
+                {% endfor -%}
+            </select>
+            <input type="text" name="days" placeholder="N days before now">
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </div>
 
 {%- endblock %}

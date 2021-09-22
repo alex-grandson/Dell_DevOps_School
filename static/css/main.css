@@ -1,0 +1,67 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    font-size: 14px;
+    padding: 20px;
+}
+
+div, h1, h2, h3, h4, h5, h6, p, a, button, input, form, ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+div, p, form, input, a, span, button {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.45em;
+    margin-bottom: 2rem;
+}
+
+button, input {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.btn {
+    margin: 0 auto;
+    background: #E84545;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 13px;
+    height: 46px;
+    width: 200px;
+    color: #FFF;
+    text-transform: uppercase;
+    line-height: 34px;
+    border: none;
+}
+
+.btn:hover {
+    background: #CE3737;
+}
+
+.btn:active, .btn:focus {
+    box-shadow: inset 0 0 30px 1px rgba(0, 0, 0, 0.3);
+}
+
+.data {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-self: center;
+}
+
+form>select, form>input {
+    margin-bottom: 30px;
+}
