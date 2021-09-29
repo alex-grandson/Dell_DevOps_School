@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  weather-web-app:
+    build: ./
+    restart: always
+    environment:
+      - API_KEY_WEATHER=
+    ports:
+      - 8080:8080

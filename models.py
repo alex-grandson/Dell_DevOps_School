@@ -1,12 +1,12 @@
 import json
+import os
 from datetime import date, timedelta
 
 import numpy as np
 import requests
 from typing import List
 
-from settings import API_KEY
-
+API_KEY = os.environ['API_KEY_WEATHER']
 
 class Parameter:
     """State class"""
