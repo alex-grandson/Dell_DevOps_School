@@ -14,13 +14,20 @@ You have only 2 possible parameters:
 - `city=<name>` - city name you want
 - `days=<n>` - number of days back
 
-If you launching it on your local machine, you can make request like this:
+## Starting app
 
+In order to start the application you need:
+
+1. Get your api-key from https://weather.visualcrossing.com and paste it
+ into `docker-compose.yaml`
 ```
-http://127.0.0.1:5000/weather?city=Saint-Petersburg&days=1
+environment:
+  - API_KEY_WEATHER=<your_api-key_goes_here>
 ```
 
-where `127.0.0.1:5000` is default localhost with default flask port.
+2. Be sure you installed docker-compose on your machine
+3. Execute command `docker-compose start`
+
 
 ## Response example
 
