@@ -1,0 +1,6 @@
+# ignore unnecessary files for docker image
+
+**/.idea/
+**/venv/
+**/preview_image.png
+**/README.md
