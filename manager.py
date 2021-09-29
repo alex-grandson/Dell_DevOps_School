@@ -6,7 +6,7 @@ from models import City
 
 
 def get_cities():
-    return pd.read_csv('cities.csv', delimiter=';', decimal='.').to_numpy()
+    return pd.read_csv('db/cities.csv', delimiter=';', decimal='.').to_numpy()
 
 
 def get_date(n_days: int):
