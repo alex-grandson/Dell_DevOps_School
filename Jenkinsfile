@@ -11,13 +11,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t weather-app .'
+//                 sh 'docker build -t weather-app .'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying to docker hub....'
-                sh 'docker push 285484/weather-app'
+//                 sh 'docker push 285484/weather-app'
             }
         }
         stage('Running') {
