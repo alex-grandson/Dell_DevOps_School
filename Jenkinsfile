@@ -1,11 +1,12 @@
 pipeline {
-    agent any
-
+//     agent docker { image 'weather-app'}
+agent any
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'sudo docker build -t weather-app .'
+                docker.build
+//                 sh 'sudo docker build -t weather-app .'
             }
         }
         stage('Deploy') {
