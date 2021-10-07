@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t weather-app .'
+                sh 'docker build -t 285484/weather-app .'
             }
         }
         stage('Deploy') {
