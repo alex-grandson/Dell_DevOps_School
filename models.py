@@ -8,6 +8,7 @@ from typing import List
 
 API_KEY = os.environ['API_KEY_WEATHER']
 
+
 class Parameter:
     """State class"""
 
@@ -29,6 +30,14 @@ class Parameter:
                                           f'"min": {self.minimum}, ' \
                                           f'"max": {self.maximum}' \
                                           '}}'
+
+    def __dict__(self):
+        return {
+            'average': self.average,
+            'median': self.median,
+            'min': self.minimum,
+            'max': self.maximum
+        }
 
     def calculate(self, arr: [float]):
         self.minimum = np.min(arr).round(1)
@@ -54,6 +63,16 @@ class City:
                f'{self.temperature_c},\n' \
                f'{self.humidity},\n' \
                f'{self.pressure_mb}\n'
+
+    def __dict__(self):
+        return {
+            'city': self.city,
+            'from': self.date_from,
+            'to': self.date_to,
+            'temperature_c': self.temperature_c.__dict__(),
+            'humidity': self.humidity.__dict__(),
+            'pressure_mb': self.pressure_mb.__dict__()
+        }
 
     def get_weather(self):
         url_endpoint = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' \
