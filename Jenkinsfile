@@ -22,6 +22,7 @@ pipeline {
             steps {
                 echo 'Deploying to docker hub....'
                 sh 'docker push 285484/weather-app'
+                sh 'docker logout'
             }
         }
 //         stage('Running') {
