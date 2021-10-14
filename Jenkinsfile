@@ -5,15 +5,25 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t 285484/weather-app .'
+                sh 'docker build -t 285484/weather-app:latest .'
             }
         }
-//         stage('Deploy') {
-//             steps {
-//                 echo 'Deploying to docker hub....'
-//                 sh 'docker push 285484/weather-app'
-//             }
-//         }
+        stage('Docker Login') {
+            steps {
+                echo 'Login..'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', passwordVariable: 'USERNAME', usernameVariable: 'PASSWORD')]) {
+                    // assumes Jib is configured to use the environment variables
+                    sh "docker login -u $USERNAME -p $PASSWORD"
+                }
+
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to docker hub....'
+                sh 'docker push 285484/weather-app'
+            }
+        }
 //         stage('Running') {
 //             steps {
 //                 echo 'Starting service....'
