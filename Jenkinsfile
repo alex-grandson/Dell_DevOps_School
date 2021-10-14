@@ -22,7 +22,6 @@ pipeline {
             steps {
                 echo 'Deploying to docker hub....'
                 sh 'docker push 285484/weather-app'
-                sh 'docker logout'
             }
         }
 //         stage('Running') {
@@ -31,5 +30,10 @@ pipeline {
 //                 sh 'docker run --rm --name weather-app -p 8080:8080 --env API_KEY_WEATHER=<your_key> -d weather-app'
 //             }
 //         }
+    post {
+        always {
+            sh 'docker logout'
+        }
+    }
     }
 }
