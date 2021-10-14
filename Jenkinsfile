@@ -35,5 +35,5 @@ pipeline {
             sh 'docker logout'
         }
     }
-    }
+
 }
