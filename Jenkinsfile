@@ -13,7 +13,7 @@ pipeline {
                 echo 'Login..'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', passwordVariable: 'USERNAME_DOCKER', usernameVariable: 'PASSWORD_DOCKER')]) {
                     // assumes Jib is configured to use the environment variables
-                    sh "docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER"
+                    sh 'docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER'
                 }
 
             }
