@@ -1,5 +1,7 @@
 # Weather service app
 
+[For more info see docs](docs/README.md)
+
 ## What app can do?
 
 App can give you an idea about average, min, max values of weather parameters like temperature (in Celsius), humidity (
