@@ -1,4 +1,21 @@
-# Создание `minikube` кластера
+# Развертывание kubernetes на двух виртуальных машинах (`minikube`)
+
+## Конфиги
+
+|util|path|
+|---|---|
+|minikube|`$USER/.minikube`
+|kubectl|`$USER/.kubectl/config`|
+
+## Login на VM с нашим K8s Cluster
+
+Вход под root осуществляется без пароля.
+
+Для обычного юзера:
+username: `docker`
+password: `tcuser`
+
+## Создание кластера
 
 ```bash
 minikube start --vm-driver=virtualbox --nodes 2 -p dell
@@ -30,7 +47,7 @@ kubelet: Running
 
 ```
 
-Запуск dashboard
+## Запуск dashboard
 
 ```bash
 ➜  ~ minikube dashboard dell   
@@ -52,7 +69,7 @@ Gtk-Message: 05:06:05.348: Failed to load module "canberra-gtk-module"
 
 ![img_1.png](../nodes.png)
 
-Деплой приложения
+## Деплой приложения
 
 ![img_2.png](deployment.png)
 > **NB**: не забывать указывать переменные окружения

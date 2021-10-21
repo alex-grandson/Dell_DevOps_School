@@ -22,17 +22,5 @@ kubectl cluster-info
 kubectl get nodes
 ```
 
-# Конфиги
 
-|util|path|
-|---|---|
-|kubectl|`$USER/.minikube`
-|minikube|`$USER/.kubectl`|
-
-# Login на VM с нашим K8s Cluster
-
-Вход под root осуществляется без пароля.
-
-- username: `docker`
-- password: `tcuser`
 
