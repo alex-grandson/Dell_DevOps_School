@@ -20,6 +20,8 @@ kubectl version -o json
 ```
 
 ![img.png](img/prep_0.png)
+
+
 ## Установка `Minikubes`
 
 Read the docs: [Minikubes](https://kubernetes.io/ru/docs/tasks/tools/install-minikube/)
@@ -38,9 +40,15 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 ```bash
 sudo mv ./minikube /usr/local/bin/
 ```
+
 Проверим установку:
 ```bash
 minikube start --vm-driver=virtualbox
+```
+
+Рекомендуется сделать VMBox дефолтным драйвером следующей командой
+```bash
+minikube config set driver virtualbox
 ```
 
 Проверить, что minikube работает с ваши гипервизором, можно следующим образом:
@@ -50,6 +58,7 @@ minikube status
 И посмотрев в само окно гипервизра
 
 ![img.png](img/prep_1.png)
+
 
 
 ## Полезные команды

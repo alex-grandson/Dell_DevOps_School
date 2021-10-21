@@ -24,6 +24,7 @@
 
 ## Solution
 
-- [Установка и настройка виртуальной машины](install_vm.md)
+[comment]: <> (- [Установка и настройка виртуальной машины]&#40;install_centos_vm.md&#41;)
 - [Установка необходимого для Kubernetes](kub_preparation.md)
-- Основные понятия
+- [Основные понятия](kuber_essentials.md)
+- [Создание кластера с `minikube`](img/create_minikube_cluster.md)
