@@ -5,13 +5,15 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t 285484/weather-app:latest .'
+                sh 'export GIT_COMMIT=$(git log -1 --format=%h)'
+                sh 'docker build -t 285484/weather-app:$GIT_COMMIT .'
             }
         }
         stage('Docker Login') {
             steps {
                 echo 'Login..'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
+
                     sh """
                     docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
                     """
