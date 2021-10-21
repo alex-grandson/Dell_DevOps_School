@@ -5,15 +5,28 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t 285484/weather-app .'
+                sh 'export GIT_COMMIT=$(git log -1 --pretty=%as)'
+                sh 'docker build -t 285484/weather-app:$GIT_COMMIT .'
             }
         }
-//         stage('Deploy') {
-//             steps {
-//                 echo 'Deploying to docker hub....'
-//                 sh 'docker push 285484/weather-app'
-//             }
-//         }
+        stage('Docker Login') {
+            steps {
+                echo 'Login..'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
+
+                    sh """
+                    docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
+                    """
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to docker hub....'
+                sh 'docker push 285484/weather-app'
+
+            }
+        }
 //         stage('Running') {
 //             steps {
 //                 echo 'Starting service....'
