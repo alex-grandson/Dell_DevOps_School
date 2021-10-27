@@ -1,4 +1,71 @@
-# Week #4 Docker pipelines
+# Week #4 Jenkins pipelines
+
+## Task
+
+Изучаем понятие Jenkins pipeline, что это такое и для чего нужны. 
+
+## Definition of Done
+
+- В репозитории проекта размещён Jenkinsfile, используемый в Jenkins job вместо freestyle project из предыдущего задания.
+- Остальные условия из задания №3 остаются в силе.
+- Замечания по поводу секретов также остаются в силе.
+
+## Materials
+
+- https://www.atlassian.com/ru/continuous-delivery/principles/infrastructure-as-code
+- https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
+- \+ курс с предыдущей недели. 
+
+## Solution
+
+Build triggers for project in Jenkins Console
+
+![img.png](img/week4_build_triggers.png)
+
+
+![img.png](img/week4_branches_behavior.png)
+
+### Final result:
+- Trigger: poolSCM. 
+- Once at 1-3 minutes jenkins checks GitHub and automatically build a docker image.
+
+![img.png](img/wee4_pipeline.png)
+
+## Pipeline listing
+
+```groovy
+pipeline {
+    agent any
+    triggers { pollSCM('H */4 * * 1-3') }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'export GIT_COMMIT=$(git log -1 --pretty=%as)'
+                sh 'docker build -t 285484/weather-app:$GIT_COMMIT .'
+            }
+        }
+        stage('Docker Login') {
+            steps {
+                echo 'Login..'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
+
+                    sh """
+                    docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
+                    """
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to docker hub....'
+                sh 'docker push 285484/weather-app'
+
+            }
+        }
+    }
+}
+```
 
 # Week #5: Kubernetes on local machine
 
@@ -35,9 +102,9 @@
 
 ## Task
 
-Jenkinsfile из задания №4 обновлён таким образом, что он делает выгрузку сервиса в kubernetes.
+- Jenkinsfile из задания №4 обновлён таким образом, что он делает выгрузку сервиса в kubernetes.
 
 ## Definition of done
 
-`kubectl get pods` показывает развернутый сервис;
-Сервис доступен согласно всем ранее описанным условиям;
+- `kubectl get pods` показывает развернутый сервис;
+- Сервис доступен согласно всем ранее описанным условиям;
