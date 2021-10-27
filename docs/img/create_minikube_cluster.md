@@ -50,9 +50,6 @@ kubelet: Running
 ## Запуск dashboard
 
 ```bash
-➜  ~ minikube dashboard dell   
-🤷  Profile "minikube" not found. Run "minikube profile list" to view all profiles.
-👉  To start a cluster, run: "minikube start"
 ➜  ~ minikube dashboard -p dell
 🔌  Enabling dashboard ...
     ▪ Using image kubernetesui/dashboard:v2.3.1
