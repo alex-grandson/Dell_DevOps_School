@@ -1,6 +1,6 @@
 # Week #4 Docker pipelines
 
-# Week #5: Kubernetes
+# Week #5: Kubernetes on local machine
 
 ## Task
 
@@ -10,7 +10,7 @@
 
 Альтернативный способ - playground на официальном сайте kubernetes.
 
-**Definition of done**
+## Definition of done
 
 - Созданы namespaces;
 - Узлы доступны по отношению друг к другу;
@@ -30,3 +30,14 @@
 - [Установка необходимого для Kubernetes](kub_preparation.md)
 - [Основные понятия](kuber_essentials.md)
 - [Создание кластера с `minikube`](img/create_minikube_cluster.md)
+
+# Week 6: Jenkins to Kubernates pipeline 
+
+## Task
+
+Jenkinsfile из задания №4 обновлён таким образом, что он делает выгрузку сервиса в kubernetes.
+
+## Definition of done
+
+`kubectl get pods` показывает развернутый сервис;
+Сервис доступен согласно всем ранее описанным условиям;
