@@ -21,7 +21,7 @@ password: `tcuser`
 minikube start --vm-driver=virtualbox --nodes 2 -p dell
 ```
 
-![img.png](../vm_nodes.png)
+![img.png](vm_nodes.png)
 
 ```bash
 ➜  ~ kubectl get nodes
@@ -64,11 +64,11 @@ Gtk-Message: 05:06:05.348: Failed to load module "canberra-gtk-module"
 
 Работающие ноды:
 
-![img_1.png](../nodes.png)
+![img_1.png](nodes.png)
 
 ## Деплой приложения
 
-![img_2.png](deployment.png)
+![img_2.png](img/deployment.png)
 > **NB**: не забывать указывать переменные окружения
 ```bash
   ~ kubectl get pods -o wide

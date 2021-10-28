@@ -48,7 +48,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 echo 'Login..'
-                withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
 
                     sh """
                     docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
@@ -96,7 +96,7 @@ pipeline {
 [comment]: <> (- [Установка и настройка виртуальной машины]&#40;install_centos_vm.md&#41;)
 - [Установка необходимого для Kubernetes](kub_preparation.md)
 - [Основные понятия](kuber_essentials.md)
-- [Создание кластера с `minikube`](img/create_minikube_cluster.md)
+- [Создание кластера с `minikube`](create_minikube_cluster.md)
 
 # Week 6: Jenkins to Kubernates pipeline 
 
@@ -108,3 +108,6 @@ pipeline {
 
 - `kubectl get pods` показывает развернутый сервис;
 - Сервис доступен согласно всем ранее описанным условиям;
+
+## Solution
+
