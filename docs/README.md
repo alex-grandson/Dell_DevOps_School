@@ -111,3 +111,28 @@ pipeline {
 
 ## Solution
 
+# Week 7: Final Demo
+
+## **Задание**
+
+Готовимся к финальному демо:
+
+- Причесать всё, учитывая замечания с предыдущих встреч;
+- Настроить ingress (приложение должно работать на поддомене weather, например: weather.p0.do-school.ru);
+- Настроить CI/CD до машин в облаке Selectel (выданные вам IP адреса). На 80 порту выданного IP появляется ваш сервис. Проверка будет в автоматическом режиме;
+
+## **Сценарий демо:**
+
+- Зелёный статус тестов от Dell Technologies; 
+- Отключение одной из нод в k8s со стороны Dell Technologies (сервис должен продолжить работу);
+- Вносим элементарные изменение в код (напр., статическое поле в JSON) -> проверяем, что изменение доехало до прода;
+
+
+## Гайды
+
+- По установке: Ingress Controller https://platform9.com/blog/building-a-complete-stack-ingress-controllers/
+- По настройке: Ingress https://platform9.com/blog/ultimate-guide-to-kubernetes-ingress-controllers/
+
+## Доп литература:
+
+- Супер инструкция: https://www.dmosk.ru/instruktions.php?object=kubernetes-ubuntu
