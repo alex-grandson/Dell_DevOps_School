@@ -141,10 +141,10 @@ pipeline {
 - [Установка и настройка `ingress`](ingress_controller-setup.md)
 
 ## Files
-- [Deployment приложения](manifests/deployment.yaml)
-- [Service приложения](manifests/service.yaml)
-- [Ingress file](manifests/ingress.yaml)
-- [Настройки ingress `/ingress-nginx/values.yaml`](ingress-nginx/values.yaml)
+- [Deployment приложения](../manifests/deployment.yaml)
+- [Service приложения](../manifests/service.yaml)
+- [Ingress file](../manifests/ingress.yaml)
+- [Настройки ingress `/ingress-nginx/values.yaml`](../ingress-nginx/values.yaml)
 
 ## Problems
 
