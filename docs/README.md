@@ -133,6 +133,18 @@ pipeline {
 - По установке: Ingress Controller https://platform9.com/blog/building-a-complete-stack-ingress-controllers/
 - По настройке: Ingress https://platform9.com/blog/ultimate-guide-to-kubernetes-ingress-controllers/
 
-## Доп литература:
 
-- Супер инструкция: https://www.dmosk.ru/instruktions.php?object=kubernetes-ubuntu
+## Solution
+
+- [Подготовка кластера](cluster_prep.md)
+- [Настройка кластера](cluster_setup.md)
+- [Установка и настройка `ingress`](ingress_controller-setup.md)
+
+## Files
+- [Deployment приложения](manifests/deployment.yaml)
+- [Service приложения](manifests/service.yaml)
+
+## Problems
+
+- Проблема с правами на выдачу балансировщика
+
