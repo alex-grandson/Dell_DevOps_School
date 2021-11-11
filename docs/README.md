@@ -144,8 +144,9 @@ pipeline {
 - [Deployment приложения](manifests/deployment.yaml)
 - [Service приложения](manifests/service.yaml)
 - [Ingress file](manifests/ingress.yaml)
+- [Настройки ingress `/ingress-nginx/values.yaml`](ingress-nginx/values.yaml)
 
 ## Problems
 
-- Проблема с правами на выдачу балансировщика
+- [Проблема с правами на выдачу балансировщика](problems_with_ingress.md)
 
