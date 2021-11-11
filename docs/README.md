@@ -109,7 +109,7 @@ pipeline {
 - `kubectl get pods` показывает развернутый сервис;
 - Сервис доступен согласно всем ранее описанным условиям;
 
-## Solution
+Задание было выполнено
 
 # Week 7: Final Demo
 
@@ -143,6 +143,7 @@ pipeline {
 ## Files
 - [Deployment приложения](manifests/deployment.yaml)
 - [Service приложения](manifests/service.yaml)
+- [Ingress file](manifests/ingress.yaml)
 
 ## Problems
 
