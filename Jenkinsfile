@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'export GIT_COMMIT=$(git log -1 --format=%h)'
-                sh 'docker build -t 285484/weather-app:$GIT_COMMIT .'
+                sh 'docker build -t 285484/weather-app:dev-$GIT_COMMIT .'
             }
         }
         stage('Docker Login') {
