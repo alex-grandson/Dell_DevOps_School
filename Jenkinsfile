@@ -16,26 +16,14 @@ pipeline {
                     sh """
                     docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
                     """
+                    sh 'docker push 285484/weather-app:master-$GIT_COMMIT'
                 }
-                sh 'docker push 285484/weather-app:master-$GIT_COMMIT'
             }
         }
-//         stage('Deploy') {
-//             steps {
-//                 echo 'Deploying to docker hub....'
-//                 sh ''
-//             }
-//         }
         stage('Apply Kubernetes files') {
             withKubeConfig([credentialsId: 'root', serverUrl: 'http://94.26.239.74']) {
               sh 'kubectl apply -f manifests'
             }
         }
-//         stage('Running') {
-//             steps {
-//                 echo 'Starting service....'
-//                 sh 'docker run --rm --name weather-app -p 8080:8080 --env API_KEY_WEATHER=<your_key> -d weather-app'
-//             }
-//         }
     }
 }
