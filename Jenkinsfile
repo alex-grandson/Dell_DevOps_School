@@ -17,7 +17,7 @@ pipeline {
 //                     docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
 //                     """
 //                 }
-                sh 'docker push 285484/weather-app:master-$GIT_COMMIT'
+                sh 'docker push 285484/weather-app:dev-$GIT_COMMIT'
             }
         }
         stage('Publish') {
