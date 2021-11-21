@@ -18,6 +18,10 @@ pipeline {
                 }
             }
         }
-
+        stage('Apply Kubernetes files') {
+            withKubeConfig([credentialsId: 'root', serverUrl: 'http://94.26.239.74']) {
+              sh 'kubectl apply -f manifests'
+            }
+        }
     }
 }
