@@ -22,7 +22,7 @@ def raw_result():
         except Exception as e:
             return '<h1>Internal Server Error</h1><br>Seems like external api doesn\'t work properly.' + data
     return '{}'
-
+# test
 
 @app.route('/result')
 def get_result():

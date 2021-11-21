@@ -9,6 +9,6 @@ WORKDIR /usr/src/dell_devops/weather_app
 
 COPY . /usr/src/dell_devops/weather_app
 
-EXPOSE 8080
+EXPOSE 5000
 
 CMD ["python", "app.py"]

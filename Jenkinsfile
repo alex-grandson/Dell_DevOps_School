@@ -9,23 +9,23 @@ pipeline {
                 sh 'docker build -t 285484/weather-app:master-$GIT_COMMIT .'
             }
         }
-        stage('Docker Login') {
+        stage('Publish') {
             steps {
                 echo 'Login..'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
                     sh """
                     docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
+                    docker push 285484/weather-app
                     """
                 }
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying to docker hub....'
-                sh 'docker push 285484/weather-app'
-
-            }
-        }
+//         stage('Deploy') {
+//             steps {
+//                 echo 'Deploying to docker hub....'
+//                 sh ''
+//             }
+//         }
         stage('Apply Kubernetes files') {
             withKubeConfig([credentialsId: 'root', serverUrl: 'http://94.26.239.74']) {
               sh 'kubectl apply -f manifests'
