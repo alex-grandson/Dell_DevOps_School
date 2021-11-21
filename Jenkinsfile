@@ -13,7 +13,6 @@ pipeline {
             steps {
                 echo 'Login..'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
-
                     sh """
                     docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
                     """
@@ -25,6 +24,11 @@ pipeline {
                 echo 'Deploying to docker hub....'
                 sh 'docker push 285484/weather-app'
 
+            }
+        }
+        stage('Apply Kubernetes files') {
+            withKubeConfig([credentialsId: 'root', serverUrl: 'http://94.26.239.74']) {
+              sh 'kubectl apply -f manifests'
             }
         }
 //         stage('Running') {
