@@ -27,17 +27,5 @@ pipeline {
 
             }
         }
-        stage('Apply Kubernetes files') {
-            withKubeConfig([credentialsId: 'root', serverUrl: 'http://94.26.239.74']) {
-              sh 'kubectl apply -f manifests'
-            }
-        }
-
-//         stage('Deploy') {
-//             steps {
-//                 echo 'Starting service....'
-//                 sh 'docker run --rm --name weather-app -p 8080:8080 --env API_KEY_WEATHER=<your_key> -d weather-app'
-//             }
-//         }
     }
 }
