@@ -18,7 +18,7 @@ def raw_result():
         try:
             result_city = City(location=city, days=int(days))
             data = result_city.get_weather()
-            return result_city.__str__()
+            return result_city.__dict__()
         except Exception as e:
             return '<h1>Internal Server Error</h1><br>Seems like external api doesn\'t work properly.' + data
     return '{}'
@@ -30,4 +30,4 @@ def get_result():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=5000)
