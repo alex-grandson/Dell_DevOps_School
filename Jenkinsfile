@@ -12,12 +12,12 @@ pipeline {
         stage('Publish') {
             steps {
                 echo 'Login..'
-                withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
-                    sh """
-                    docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
-                    docker push 285484/weather-app
-                    """
-                }
+//                 withCredentials([usernamePassword(credentialsId: 'dockerhub_285484', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
+//                     sh """
+//                     docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
+//                     """
+//                 }
+                sh 'docker push 285484/weather-app:master-$GIT_COMMIT'
             }
         }
 //         stage('Deploy') {
