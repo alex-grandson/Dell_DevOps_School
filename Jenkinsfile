@@ -18,10 +18,24 @@ pipeline {
                 }
             }
         }
-        stage('Apply Kubernetes files') {
-            withKubeConfig([credentialsId: 'root', serverUrl: 'http://94.26.239.74']) {
-              sh 'kubectl apply -f manifests'
+
+        stage('Deploy') {
+            steps {
+                withKubeConfig([credentialsId: 'kubernetes-token', serverUrl: 'https://weather.p5.do-school.ru:6443']) {
+                    sh 'kubectl set image deployments/weather-deployment weather=285484/weather-app:dev-${$GIT_COMMIT}'
+                }
             }
+        }
+//         stage('Apply Kubernetes files') {
+//             withKubeConfig([credentialsId: 'root', serverUrl: 'http://94.26.239.74']) {
+//               sh 'kubectl apply -f manifests'
+//             }
+//         }
+    }
+    post {
+        always {
+            sh 'docker logout'
+            cleanWs()
         }
     }
 }
