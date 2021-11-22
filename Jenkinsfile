@@ -9,18 +9,31 @@ pipeline {
                 sh 'docker build -t 285484/weather-app:master-$GIT_COMMIT .'
             }
         }
-        stage('Publish') {
+        stage('Publish master') {
             steps {
                 echo 'Login..'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
                     sh 'docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER'
                     sh 'docker push 285484/weather-app:master-$GIT_COMMIT'
+                    sh 'echo privet'
+                }
+            }
+        }
+        stage('Update :latest') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
+                    sh 'docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER'
                     sh 'docker tag 285484/weather-app:master-$GIT_COMMIT 285484/weather-app:latest'
                     sh 'docker push 285484/weather-app:latest'
                     sh 'echo privet'
-                    sh 'docker logout'
                 }
             }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+            sh 'docker logout'
         }
     }
 }
