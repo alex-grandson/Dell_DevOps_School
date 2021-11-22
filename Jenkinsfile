@@ -17,6 +17,8 @@ pipeline {
                     docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
                     """
                     sh 'docker push 285484/weather-app:master-$GIT_COMMIT'
+                    sh 'docker tag 285484/weather-app:master-$GIT_COMMIT 285484/weather-app:latest'
+                    sh 'docker push 285484/weather-app:latest'
                 }
             }
         }
