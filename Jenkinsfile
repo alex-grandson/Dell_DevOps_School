@@ -4,18 +4,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
                 sh 'export GIT_COMMIT=$(git log -1 --format=%h)'
                 sh 'docker build -t 285484/weather-app:master-$GIT_COMMIT .'
             }
         }
         stage('Publish master') {
             steps {
-                echo 'Login..'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME_DOCKER', passwordVariable: 'PASSWORD_DOCKER')]) {
                     sh 'docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER'
                     sh 'docker push 285484/weather-app:master-$GIT_COMMIT'
-                    sh 'echo privet'
                 }
             }
         }
@@ -25,8 +22,12 @@ pipeline {
                     sh 'docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER'
                     sh 'docker tag 285484/weather-app:master-$GIT_COMMIT 285484/weather-app:latest'
                     sh 'docker push 285484/weather-app:latest'
-                    sh 'echo privet'
                 }
+            }
+        }
+        stage ('K8s deploy') {
+            steps {
+                echo 'Mock'
             }
         }
     }
