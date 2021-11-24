@@ -83,7 +83,7 @@ pipeline {
 - Узлы доступны по отношению друг к другу;
 - Команда kubectl get nodes выводит доступные узлы в статусе ready.
 
-![img.png](get_nodes.png)
+![img.png](img/get_nodes.png)
 
 В финале ждем отчет с инструкцией по установке + финальным выводом консоли.
 
@@ -109,11 +109,12 @@ pipeline {
 - `kubectl get pods` показывает развернутый сервис;
 - Сервис доступен согласно всем ранее описанным условиям;
 
-Задание было выполнено
+## Solution
+- [Figuring out k8s deployment](jenkins2k8s_pipeline.md)
 
 # Week 7: Final Demo
 
-## **Задание**
+## **Task**
 
 Готовимся к финальному демо:
 
@@ -121,14 +122,14 @@ pipeline {
 - Настроить ingress (приложение должно работать на поддомене weather, например: weather.p0.do-school.ru);
 - Настроить CI/CD до машин в облаке Selectel (выданные вам IP адреса). На 80 порту выданного IP появляется ваш сервис. Проверка будет в автоматическом режиме;
 
-## **Сценарий демо:**
+## **Demo script**
 
 - Зелёный статус тестов от Dell Technologies; 
 - Отключение одной из нод в k8s со стороны Dell Technologies (сервис должен продолжить работу);
 - Вносим элементарные изменение в код (напр., статическое поле в JSON) -> проверяем, что изменение доехало до прода;
 
 
-## Гайды
+## Guides
 
 - По установке: Ingress Controller https://platform9.com/blog/building-a-complete-stack-ingress-controllers/
 - По настройке: Ingress https://platform9.com/blog/ultimate-guide-to-kubernetes-ingress-controllers/
@@ -140,13 +141,12 @@ pipeline {
 - [Настройка кластера](cluster_setup.md)
 - [Установка и настройка `ingress`](ingress_controller-setup.md)
 
-## Files
+
+Files:
 - [Deployment приложения](../manifests/deployment.yaml)
 - [Service приложения](../manifests/service.yaml)
 - [Ingress file](../manifests/ingress.yaml)
 - [Настройки ingress `/ingress-nginx/values.yaml`](../ingress-nginx/values.yaml)
 
-## Problems
-
-- [Проблема с правами на выдачу балансировщика](problems_with_ingress.md)
+![img.png](img/week7_jenkins.png)
 
