@@ -146,7 +146,6 @@ Files:
 - [Deployment приложения](../manifests/deployment.yaml)
 - [Service приложения](../manifests/service.yaml)
 - [Ingress file](../manifests/ingress.yaml)
-- [Настройки ingress `/ingress-nginx/values.yaml`](../ingress-nginx/values.yaml)
 
 ![img.png](img/week7_jenkins.png)
 
