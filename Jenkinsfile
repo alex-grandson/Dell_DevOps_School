@@ -32,13 +32,7 @@ pipeline {
 //                 }
                 sshagent(['k8s']) {
                     script {
-                        try {
-                            sh 'ssh root@94.26.239.74 kubectl set image -n default deployment/weather-deploy weather-app=285484/weather-app:latest'
-                        } catch {
-                        // rollback
-//                             sh 'ssh root@94.26.239.74 '
-                            echo 'Mock'
-                        }
+                        sh 'ssh root@94.26.239.74 kubectl set image -n default deployment/weather-deploy weather-app=285484/weather-app:latest'
                     }
                 }
             }
