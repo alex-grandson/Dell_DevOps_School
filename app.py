@@ -17,7 +17,7 @@ def raw_result():
     if manager.is_valid_day(days):
         try:
             result_city = City(location=city, days=int(days))
-            data = result_city.get_weather()
+            data = result_city.get_weather(debug=True)
             return result_city.__dict__()
         except Exception as e:
             return '<h1>Internal Server Error</h1><br>Seems like external api doesn\'t work properly.' + data

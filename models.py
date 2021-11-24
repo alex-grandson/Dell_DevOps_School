@@ -64,6 +64,16 @@ class City:
                f'{self.humidity},\n' \
                f'{self.pressure_mb}\n'
 
+    # def __dict__(self):
+    #     return {
+    #         'city': self.city,
+    #         'from': self.date_from,
+    #         'to': self.date_to,
+    #         'temperature_c': self.temperature_c.__dict__(),
+    #         'humidity': self.humidity.__dict__(),
+    #         'pressure_mb': self.pressure_mb.__dict__()
+    #     }
+
     def __dict__(self):
         return {
             'city': self.city,
@@ -75,14 +85,23 @@ class City:
         }
 
     def get_weather(self):
-        url_endpoint = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' \
-                       f'{self.location}/{self.date_from}/{self.date_to}?unitGroup=metric&key={API_KEY}'
-        try:
-            raw_data = requests.get(url_endpoint).text
-            data = json.loads(raw_data)
-            self.temperature_c.calculate([item['temp'] for item in data['days']])
-            self.humidity.calculate([item['humidity'] for item in data['days']])
-            self.pressure_mb.calculate([item['pressure'] for item in data['days']])
-            return raw_data
-        except Exception as e:
-            print(e)
+        return self.get_weather(debug=False)
+
+    def get_weather(self, debug: bool):
+        if not debug:
+            url_endpoint = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' \
+                           f'{self.location}/{self.date_from}/{self.date_to}?unitGroup=metric&key={API_KEY}'
+            try:
+                raw_data = requests.get(url_endpoint).text
+                data = json.loads(raw_data)
+                self.temperature_c.calculate([item['temp'] for item in data['days']])
+                self.humidity.calculate([item['humidity'] for item in data['days']])
+                self.pressure_mb.calculate([item['pressure'] for item in data['days']])
+                return raw_data
+            except Exception as e:
+                print(e)
+        else:
+            self.humidity = Parameter('humidity', average=79.2, maximum=84.9, median=80.7, minimum=70.6)
+            self.pressure_mb = Parameter('pressure_mb', average=996.4, maximum=1009, median=994.5, minimum=987.6)
+            self.temperature_c = Parameter('temperature_c', average=0.9, maximum=2.9, median=1.8, minimum=-2.6)
+
