@@ -30,11 +30,11 @@ pipeline {
 //                 withKubeConfig([credentialsId: 'kubernetes_creds', serverUrl: 'https://94.26.239.74:6443']) {
 //                     sh 'kubectl set image -n default deployment/weather-deploy weather-app=285484/weather-app:latest'
 //                 }
-                sshagent(['k8s']) {
-                    script {
+//                 sshagent(['k8s']) {
+//                     script {
                         sh 'ssh root@94.26.239.74 kubectl set image -n default deployment/weather-deploy weather-app=285484/weather-app:latest'
-                    }
-                }
+//                     }
+//                 }
             }
         }
     }
