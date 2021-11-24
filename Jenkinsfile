@@ -31,10 +31,7 @@ pipeline {
 //                     sh 'kubectl set image -n default deployment/weather-deploy weather-app=285484/weather-app:latest'
 //                 }
                 sshagent(['k8s-node0']) {
-//                     script {
-                        sh 'ssh -o StrictHostKeyChecking=no root@94.26.239.74 uname -a'
-                        sh 'ssh -o StrictHostKeyChecking=no root@94.26.239.74 kubectl set image -n default deployment/weather-deploy weather-app=285484/weather-app:latest'
-//                     }
+                    sh 'ssh -o StrictHostKeyChecking=no root@94.26.239.74 kubectl set image -n default deployment/weather-deploy weather-app=285484/weather-app:latest'
                 }
             }
         }
