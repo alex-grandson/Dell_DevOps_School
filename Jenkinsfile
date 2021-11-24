@@ -28,7 +28,7 @@ pipeline {
         stage('K8s deploy') {
             steps {
                 withKubeConfig([credentialsId: 'kubernetes_creds', serverUrl: 'https://94.26.239.74:6443']) {
-                    sh 'kubectl set image deployment/weather-deploy weather-app=285484/weather-app:latest'
+                    sh 'kubectl set image -n default deployment/weather-deploy weather-app=285484/weather-app:latest'
                 }
             }
         }
