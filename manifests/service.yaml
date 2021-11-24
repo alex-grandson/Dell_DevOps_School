@@ -3,12 +3,15 @@ kind: Service
 metadata:
   name: weather-service
   labels:
-    app.kubernetes.io/name: weather-app
-    description: web_app_weather_dell_services
+    app: "weather-app"
+    owner: "leha_vnuk"
 spec:
   selector:
-    app.kubernetes.io/name: weather
+    app: "weather-app"
   ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 80
+    - name      : api-listener
+      protocol  : TCP
+      port      : 80
+      targetPort: 5000
+      nodePort  : 32000
+  type: NodePort

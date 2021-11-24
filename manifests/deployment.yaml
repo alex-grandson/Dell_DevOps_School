@@ -3,26 +3,29 @@ kind: Deployment
 metadata:
   name: weather-deploy
   labels:
-    app.kubernetes.io/name: weather-app
-    description: web_app_weather_dell_deployment
+    app: "weather-app"
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: weather
+      app: weather-app
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: weather
+        app: weather-app
     spec:
       containers:
-      - name: weather-app-name
-        image: 285484/weather-app:latest
+      - name: weather-app
+        image: 285484/weather-app:master-0b04eecee845272bd57818021f5a4024bf379f3b
+        imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
         env:
         - name: API_KEY_WEATHER
-          value: "YXAFBQ9XYK8RHJQGXCVJWQ7M3"
+          valueFrom:
+            secretKeyRef:
+              name: weather-api
+              key : "API_KEY_WEATHER"
 ---
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
@@ -34,7 +37,7 @@ spec:
     kind: Deployment
     name: weather-deploy
   minReplicas: 1
-  maxReplicas: 2
+  maxReplicas: 4
   metrics:
   - type: Resource
     resource:
